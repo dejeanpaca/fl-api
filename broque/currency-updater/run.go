@@ -32,17 +32,16 @@ func main() {
 	if res.Body != nil {
 		defer res.Body.Close()
 
-	body, readErr := io.ReadAll(res.Body)
-	if readErr != nil {
-		log.Fatal(readErr)
+		body, readErr := io.ReadAll(res.Body)
+		if readErr != nil {
+			log.Fatal(readErr)
+		}
+
+		writeErr := os.WriteFile(targetFile, body, os.ModeExclusive)
+		if writeErr != nil {
+			log.Fatal(writeErr)
+		}
 	}
-
-	writeErr := os.WriteFile(targetFile, body, os.ModeExclusive)
-	if err != nil {
-		log.Fatal(writeErr)
-	}	}
-
-
 
 	log.Println("Done updating currencies")
 }
