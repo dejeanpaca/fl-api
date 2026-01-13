@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/fl-api/broque/stocks-sync/internal/snp"
 )
 
 func main() {
@@ -26,6 +28,8 @@ func main() {
 	client := http.Client{
 		Timeout: time.Second * 10,
 	}
+
+	snp.LoadSNP()
 
 	getAndWriteURL(client, tdUrlStocks, "stocks.json")
 	getAndWriteURL(client, reqUrl, targetFile)
