@@ -2,7 +2,6 @@ package types
 
 import (
 	"encoding/json"
-	"fmt"
 	"strconv"
 	"time"
 )
@@ -115,8 +114,6 @@ func (p *SNPConstituent) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	p.HeadquartersLocation = headquartersLocation
-
-	fmt.Printf("%+v", *p)
 
 	return nil
 }
